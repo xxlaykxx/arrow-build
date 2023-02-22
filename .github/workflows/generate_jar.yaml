@@ -37,6 +37,8 @@ jobs:
         run: |
           set -e
           source /home/runner/miniconda3/bin/activate root
+          conda create -n p37env python=3.7 \
+          conda activate p37env
           conda install -y \
           click \
           github3.py \
