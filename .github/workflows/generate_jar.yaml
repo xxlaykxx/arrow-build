@@ -8,7 +8,7 @@ env:
 jobs:
   trigger-crossbow:
     name: Trigger Crossbow
-    runs-on: ubuntu-latest
+    runs-on: darwin
     steps:
       - uses: actions/setup-python@v4
         with:
