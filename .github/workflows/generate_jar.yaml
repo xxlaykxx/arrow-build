@@ -33,6 +33,8 @@ jobs:
           echo "Configuring conda."
           source /home/runner/miniconda3/bin/activate root
           conda config --remove channels defaults
+          conda config --add channels fusion-energy
+          conda config --add channels cadquery
           conda config --add channels conda-forge
           conda config --set show_channel_urls true
       - name: Install packages
