@@ -8,11 +8,8 @@ env:
 jobs:
   trigger-crossbow:
     name: Trigger Crossbow
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-python@v4
-        with:
-          python-version: '3.6.15'
       - uses: actions/checkout@v3
         with:
           ref: 'master'
@@ -21,9 +18,9 @@ jobs:
         run: |
           set -e
           echo ""
-          echo "Installing a fresh version of Miniconda."
+          echo "Installing Miniconda."
           MINICONDA_URL="https://repo.continuum.io/miniconda"
-          MINICONDA_FILE="Miniconda3-latest-Linux-x86_64.sh"
+          MINICONDA_FILE="Miniconda3-py39_22.11.1-1-Linux-x86_64.sh"
           curl -L -O "${MINICONDA_URL}/${MINICONDA_FILE}"
           bash $MINICONDA_FILE -b
       - name: Configuring Conda
@@ -33,8 +30,7 @@ jobs:
           echo "Configuring conda."
           source /home/runner/miniconda3/bin/activate root
           conda config --remove channels defaults
-          conda config --add channels fusion-energy
-          conda config --add channels cadquery
+          conda config --add channels defaults
           conda config --add channels conda-forge
           conda config --set show_channel_urls true
       - name: Install packages
@@ -55,6 +51,6 @@ jobs:
           set -e
           pushd ..
           source /home/runner/miniconda3/bin/activate root
-          git clone -b my_branch_rel-2300 https://github.com/schavan6/sonal_arrow.git
+          git clone -b my_branch_rel-2300 https://github.com/schavan6/sonal_arrow
           pip install -e arrow/dev/archery[crossbow] 
           archery crossbow --queue-path $GITHUB_WORKSPACE --queue-remote https://github.com/$GITHUB_REPOSITORY submit java-jars --job-prefix nightly
