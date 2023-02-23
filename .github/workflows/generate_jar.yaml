@@ -40,7 +40,7 @@ jobs:
         run: |
           set -e
           source /home/runner/miniconda3/bin/activate root
-          conda install -y \
+          conda install -y -c conda-forge\
           click \
           github3.py \
           jinja2 \
