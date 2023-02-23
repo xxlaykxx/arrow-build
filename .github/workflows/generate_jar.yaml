@@ -33,14 +33,13 @@ jobs:
           echo "Configuring conda."
           source /home/runner/miniconda3/bin/activate root
           conda config --remove channels defaults
-          conda config --add channels defaults
           conda config --add channels conda-forge
           conda config --set show_channel_urls true
       - name: Install packages
         run: |
           set -e
           source /home/runner/miniconda3/bin/activate root
-          conda install -y -c conda-forge \
+          conda install -y \
           click \
           github3.py \
           jinja2 \
