@@ -51,6 +51,6 @@ jobs:
           set -e
           pushd ..
           source /home/runner/miniconda3/bin/activate root
-          git clone -b rel-2300_aarch64 https://github.com/schavan6/arrow.git
+          git clone -b master https://github.com/lriggs/arrow.git
           pip install -e arrow/dev/archery[crossbow] 
           archery crossbow --queue-path $GITHUB_WORKSPACE --queue-remote https://github.com/$GITHUB_REPOSITORY submit java-jars --job-prefix nightly
