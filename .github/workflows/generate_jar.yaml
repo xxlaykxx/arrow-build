@@ -51,7 +51,7 @@ jobs:
           set -e
           pushd ..
           source /home/runner/miniconda3/bin/activate root
-          git clone -b test_11 https://github.com/lriggs/arrow.git
+          git clone -b test_rel-2300 https://github.com/lriggs/arrow.git
           pip install -e arrow/dev/archery[crossbow] 
           echo GITHUB_WORKSPACE:$GITHUB_WORKSPACE
           echo GITHUB_REPOSITORY: $GITHUB_REPOSITORY
