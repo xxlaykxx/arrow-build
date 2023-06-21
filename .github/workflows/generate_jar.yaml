@@ -52,7 +52,7 @@ jobs:
           set -e
           pushd ..
           source /home/runner/miniconda3/bin/activate root
-          git clone -b dremio-12.0-main https://github.com/xxlaykxx/arrow.git
+          git clone -b dremio-12.0-main https://github.com/dremio/arrow.git
           pip install -e arrow/dev/archery[crossbow] 
           echo GITHUB_WORKSPACE:$GITHUB_WORKSPACE
           echo GITHUB_REPOSITORY: $GITHUB_REPOSITORY
